@@ -1,61 +1,95 @@
 /**
- * KKDS tasarım token'ları (renk, tipografi, boşluk).
- * Claude Design'dan gelen arayüz buraya kolayca eşlenebilir;
- * tüm bileşenler bu token'ları kullanır, böylece tek yerden tema değişir.
+ * KKDS / "Skorla" tasarım token'ları — Claude Design "Friendly Rounded" sistemi.
+ * CSS color-mix değerleri React Native için somut renklere çözüldü.
+ * Tüm bileşenler bu token'ları kullanır; sabit (hard-coded) değer kullanma.
  */
 
 export const colors = {
-  // Marka
-  primary: '#0B6E99',
-  primaryDark: '#075066',
-  primarySoft: '#E6F4FE',
-
-  // Yüzeyler
-  background: '#F7F9FB',
-  surface: '#FFFFFF',
-  surfaceAlt: '#F0F3F6',
+  // Marka (mor)
+  accent: '#7C3AED',
+  accent2: '#A855F7',
 
   // Metin
-  text: '#0F1B26',
-  textMuted: '#5A6B78',
-  textInverse: '#FFFFFF',
+  text: '#2C1A4A', // ink — derin mor (color-mix accent 60% + #15082c)
+  muted: '#8A82A6', // muted gri-mor
 
-  // Kenarlık / ayraç
-  border: '#E2E8ED',
+  // Yüzeyler
+  bg: '#F8F5FE', // çok açık lavanta (accent %5 + beyaz)
+  surface: '#FFFFFF',
+  tint: '#F1E9FD', // accent %11 + beyaz
+  tint2: '#E7DCFC', // accent %18 + beyaz
+  border: '#ECE3FB', // ince mor ayraç
 
-  // Risk / sonuç renkleri (klinik şiddet ölçeği)
-  severity: {
-    low: '#1A8A5A',
-    moderate: '#C77700',
-    high: '#D9480F',
-    critical: '#C92A2A',
-    info: '#0B6E99',
+  // Risk tonları (klinik şiddet)
+  tone: {
+    low: '#16A34A', // yeşil
+    mid: '#D97706', // amber
+    high: '#E11D48', // kırmızı-pembe
   },
 } as const;
 
-export type Severity = keyof typeof colors.severity;
+export type Tone = keyof typeof colors.tone;
+
+/** Risk tonunun gradyan uçları (sonuç ekranı hero + CTA). */
+export const gradients: Record<Tone | 'accent', [string, string]> = {
+  accent: ['#7C3AED', '#A855F7'],
+  low: ['#16A34A', '#34D399'],
+  mid: ['#D97706', '#FBBF24'],
+  high: ['#E11D48', '#FB7185'],
+};
 
 export const spacing = {
   xs: 4,
-  sm: 8,
-  md: 12,
-  lg: 16,
-  xl: 24,
-  xxl: 32,
+  sm: 6,
+  md: 9,
+  lg: 13,
+  xl: 16,
+  xxl: 22,
+  xxxl: 30,
 } as const;
 
 export const radius = {
-  sm: 8,
-  md: 12,
-  lg: 16,
-  pill: 999,
+  box: 9,
+  pill: 13,
+  tile: 15,
+  card: 18,
+  hero: 24,
+  round: 999,
 } as const;
 
-export const typography = {
-  title: { fontSize: 26, fontWeight: '700' as const },
-  heading: { fontSize: 20, fontWeight: '700' as const },
-  subtitle: { fontSize: 16, fontWeight: '600' as const },
-  body: { fontSize: 15, fontWeight: '400' as const },
-  label: { fontSize: 14, fontWeight: '600' as const },
-  caption: { fontSize: 13, fontWeight: '400' as const },
+/** Plus Jakarta Sans ağırlıkları (expo-font ile yüklenir). */
+export const fonts = {
+  medium: 'Jakarta500',
+  semibold: 'Jakarta600',
+  bold: 'Jakarta700',
+  extrabold: 'Jakarta800',
+} as const;
+
+/** Mor tonlu yumuşak gölge (kart). */
+export const shadow = {
+  shadowColor: '#2E1065',
+  shadowOpacity: 0.1,
+  shadowRadius: 6,
+  shadowOffset: { width: 0, height: 2 },
+  elevation: 2,
+} as const;
+
+/** Daha belirgin "kalkık" gölge (hover / vurgulu öğeler). */
+export const shadowLift = {
+  shadowColor: '#2E1065',
+  shadowOpacity: 0.22,
+  shadowRadius: 16,
+  shadowOffset: { width: 0, height: 8 },
+  elevation: 6,
+} as const;
+
+export const type = {
+  title: { fontFamily: fonts.extrabold, fontSize: 26, letterSpacing: -0.6 },
+  heading: { fontFamily: fonts.extrabold, fontSize: 21, letterSpacing: -0.4 },
+  code: { fontFamily: fonts.extrabold, fontSize: 16, letterSpacing: -0.2 },
+  subtitle: { fontFamily: fonts.bold, fontSize: 15 },
+  body: { fontFamily: fonts.semibold, fontSize: 14.5 },
+  label: { fontFamily: fonts.bold, fontSize: 13 },
+  caption: { fontFamily: fonts.medium, fontSize: 12.5 },
+  micro: { fontFamily: fonts.bold, fontSize: 11, letterSpacing: 0.7 },
 } as const;
