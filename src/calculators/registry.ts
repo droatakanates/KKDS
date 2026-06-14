@@ -70,6 +70,14 @@ import { psi } from './defs/psi';
 import { fourC } from './defs/four-c';
 import { news2 } from './defs/news2';
 import { sofa } from './defs/sofa';
+import { das28 } from './defs/das28';
+import { sledai } from './defs/sledai';
+import { basdai } from './defs/basdai';
+import { asdas } from './defs/asdas';
+import { ffs } from './defs/ffs';
+import { charlson } from './defs/charlson';
+import { cam } from './defs/cam';
+import { ciwa } from './defs/ciwa';
 
 /**
  * Tüm skorların kayıt defteri.
@@ -95,6 +103,10 @@ export const calculators: Calculator[] = [
   homaIr,
   // Hematoloji / Onkoloji
   fourTs, isthDic, plasmic, ecog, karnofsky, mascc, khorana, ipi, flipi, issMyeloma, binet, rai,
+  // Romatoloji
+  das28, sledai, basdai, asdas, ffs,
+  // Genel Dahiliye / Geriatri
+  charlson, cam, ciwa,
 ];
 
 /** Branşların sırası + ikon anahtarı (ana sayfa gruplama + masaüstü kenar çubuğu). */
