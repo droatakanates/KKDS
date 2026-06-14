@@ -64,10 +64,23 @@ src/
     index.ts               # Tasarım token'ları (renk, tone, gradyan, font, gölge)
 ```
 
-## Skorlar (başlangıç)
+## Skorlar (80 skor / 11 branş)
 
-CHA₂DS₂-VASc · Wells (PE) · CURB-65 · Glasgow Koma Skalası · eGFR (CKD-EPI 2021,
-formül tipi). Hepsi üç dilde; her biri "ne zaman kullanılır" + kaynak içerir.
+Hepsi üç dilde; her biri "ne zaman kullanılır" + kaynak içerir. Branşlar:
+
+- **Kardiyoloji:** CHA₂DS₂-VASc, HAS-BLED, CHADS₂, Killip, NYHA, HEART, TIMI (NSTEMI/STEMI), Sgarbossa, ORBIT
+- **Tromboemboli:** Wells (PE/DVT), sPESI, PERC, Padua, IMPROVE VTE, Hestia, Caprini
+- **Solunum:** CURB-65, PSI, SMART-COP, mMRC, CAT, ACT, Epworth, Light, BODE, GOLD, STOP-BANG, 4C
+- **Gastro/Hepatoloji:** Child-Pugh, MELD, MELD-Na, Maddrey, GAHS, FIB-4, APRI, NAFLD-FS, AIMS65, Rockall, West Haven, Ranson, BISAP, Harvey-Bradshaw, Parsiyel Mayo
+- **Nefroloji/Metabolik:** eGFR (CKD-EPI), Cockcroft-Gault, anyon açığı, düzeltilmiş Ca/Na, Winter, osmolar açık, FENa, HOMA-IR
+- **Hematoloji/Onkoloji:** 4Ts, ISTH DIC, PLASMIC, ECOG, Karnofsky, MASCC, Khorana, IPI, FLIPI, ISS, Binet, Rai
+- **İnfeksiyon/Sepsis:** qSOFA, SIRS, Centor, NEWS2, SOFA
+- **Romatoloji:** DAS28, SLEDAI-2K, BASDAI, ASDAS-CRP, FFS
+- **Nöroloji:** Glasgow Koma Skalası · **Genel/Geriatri:** Charlson, CAM, CIWA-Ar
+
+> Geçerli katsayı/algoritma tablosu veya kombinatoryal mantık gerektiren
+> birkaç skor sonraya bırakıldı: GRACE, Duke, APACHE II, FRAX, ASCVD, SCORE2,
+> Framingham, tam BVAS ve KDIGO/RIFLE/AKIN (AKI evrelemesi).
 
 ## Yeni Skor Ekleme
 
