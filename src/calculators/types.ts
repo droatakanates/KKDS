@@ -7,10 +7,32 @@ export type Locale = 'tr' | 'az' | 'tr-CY';
 export type LocalizedText = Record<Locale, string>;
 
 /** Skorların gruplandığı klinik branşlar. */
-export type CategoryId = 'cardio' | 'pulm' | 'neph' | 'neuro' | 'emerg';
+export type CategoryId =
+  | 'cardio'
+  | 'vte'
+  | 'pulm'
+  | 'gastro'
+  | 'neph'
+  | 'endo'
+  | 'heme'
+  | 'infect'
+  | 'rheum'
+  | 'neuro'
+  | 'general';
 
 /** Branş ikon anahtarları (components/Icon). */
-export type CategoryIcon = 'heart' | 'lung' | 'kidney' | 'brain' | 'bolt';
+export type CategoryIcon =
+  | 'heart'
+  | 'droplet'
+  | 'lung'
+  | 'stomach'
+  | 'kidney'
+  | 'flask'
+  | 'cells'
+  | 'shield'
+  | 'bone'
+  | 'brain'
+  | 'activity';
 
 /** Tek bir seçeneğin değeri, etiketi ve (varsa) puan katkısı. */
 export interface ScoreOption {

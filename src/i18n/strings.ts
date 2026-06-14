@@ -65,8 +65,14 @@ export const navTabs: { id: 'home' | 'saved' | 'history' | 'profile'; label: Loc
 /** Branş adları. */
 export const categoryNames: Record<CategoryId, LocalizedText> = {
   cardio: { tr: 'Kardiyoloji', az: 'Kardiologiya', 'tr-CY': 'Kardiyoloji' },
-  pulm: { tr: 'Pulmoner', az: 'Pulmoner', 'tr-CY': 'Pulmoner' },
+  vte: { tr: 'Tromboemboli', az: 'Tromboemboliya', 'tr-CY': 'Tromboemboli' },
+  pulm: { tr: 'Solunum', az: 'Tənəffüs', 'tr-CY': 'Solunum' },
+  gastro: { tr: 'Gastro / Hepatoloji', az: 'Qastro / Hepatologiya', 'tr-CY': 'Gastro / Hepatoloji' },
   neph: { tr: 'Nefroloji', az: 'Nefrologiya', 'tr-CY': 'Nefroloji' },
+  endo: { tr: 'Endokrin / Metabolik', az: 'Endokrin / Metabolik', 'tr-CY': 'Endokrin / Metabolik' },
+  heme: { tr: 'Hematoloji / Onkoloji', az: 'Hematologiya / Onkologiya', 'tr-CY': 'Hematoloji / Onkoloji' },
+  infect: { tr: 'İnfeksiyon / Sepsis', az: 'İnfeksiya / Sepsis', 'tr-CY': 'İnfeksiyon / Sepsis' },
+  rheum: { tr: 'Romatoloji', az: 'Revmatologiya', 'tr-CY': 'Romatoloji' },
   neuro: { tr: 'Nöroloji', az: 'Nevrologiya', 'tr-CY': 'Nöroloji' },
-  emerg: { tr: 'Acil', az: 'Təcili', 'tr-CY': 'Acil' },
+  general: { tr: 'Genel Dahiliye', az: 'Ümumi Daxili', 'tr-CY': 'Genel Dahiliye' },
 };

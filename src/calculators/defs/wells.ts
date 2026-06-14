@@ -3,8 +3,8 @@ import type { Calculator } from '../types';
 /** Wells Skoru — Pulmoner Emboli (PE) klinik olasılığı. */
 export const wells: Calculator = {
   id: 'wells',
-  category: 'pulm',
-  code: 'Wells',
+  category: 'vte',
+  code: 'Wells (PE)',
   kind: 'additive',
   max: 12.5,
   name: { tr: 'Wells Skoru (PE)', az: 'Wells Balı (PE)', 'tr-CY': 'Wells Skoru (PE)' },

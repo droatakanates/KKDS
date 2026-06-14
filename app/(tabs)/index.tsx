@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { calculators, scoresIn, SPECIALTIES } from '../../src/calculators/registry';
-import type { CategoryId } from '../../src/calculators/types';
+import { calculators, scoresIn, usedSpecialties } from '../../src/calculators/registry';
+import type { CategoryIcon, CategoryId } from '../../src/calculators/types';
 import { Icon } from '../../src/components/Icon';
 import { LanguageToggle } from '../../src/components/LanguageToggle';
 import { ScoreCard } from '../../src/components/ScoreCard';
@@ -30,9 +30,10 @@ export default function HomeScreen() {
   }, [q, cat, searching, tx]);
 
   const grouped = cat === 'all' && !searching;
+  const specs = usedSpecialties();
   const catList: ([CategoryId, string] | ['all', string])[] = [
     ['all', t('all')],
-    ...SPECIALTIES.map((s) => [s.id, tx(categoryNames[s.id])] as [CategoryId, string]),
+    ...specs.map((s) => [s.id, tx(categoryNames[s.id])] as [CategoryId, string]),
   ];
 
   return (
@@ -88,7 +89,7 @@ export default function HomeScreen() {
                 {calculators.filter((c) => favorites.includes(c.id)).map((c) => <ScoreCard key={c.id} calc={c} />)}
               </Group>
             )}
-            {SPECIALTIES.map((s) => {
+            {specs.map((s) => {
               const items = scoresIn(s.id);
               if (!items.length) return null;
               return (
@@ -121,7 +122,7 @@ function Group({
 }: {
   label: string;
   count?: number;
-  specIcon?: 'heart' | 'lung' | 'kidney' | 'brain' | 'bolt';
+  specIcon?: CategoryIcon;
   starHeader?: boolean;
   children: React.ReactNode;
 }) {

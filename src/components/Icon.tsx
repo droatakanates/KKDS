@@ -5,7 +5,8 @@ import { colors } from '../theme';
 export type IconName =
   | 'pulse' | 'search' | 'back' | 'chev' | 'check' | 'arrow' | 'star' | 'starline'
   | 'home' | 'bookmark' | 'clock' | 'user' | 'info'
-  | 'heart' | 'lung' | 'kidney' | 'brain' | 'bolt';
+  | 'heart' | 'lung' | 'kidney' | 'brain' | 'bolt'
+  | 'droplet' | 'stomach' | 'flask' | 'cells' | 'shield' | 'bone' | 'activity';
 
 interface Props {
   name: IconName;
@@ -58,6 +59,20 @@ export function Icon({ name, size = 20, color = colors.accent, filled }: Props) 
       return <Svg width={size} height={size} viewBox="0 0 22 22"><Path {...common} d="M11 5a3 3 0 0 0-5.8-1A2.6 2.6 0 0 0 4 9a2.6 2.6 0 0 0 1.5 4.5A2.8 2.8 0 0 0 11 14zM11 5a3 3 0 0 1 5.8-1A2.6 2.6 0 0 1 18 9a2.6 2.6 0 0 1-1.5 4.5A2.8 2.8 0 0 1 11 14zM11 5v12" /></Svg>;
     case 'bolt':
       return <Svg width={size} height={size} viewBox="0 0 22 22"><Path {...common} d="M12 2L4 12h6l-1 8 9-11h-6z" /></Svg>;
+    case 'droplet':
+      return <Svg width={size} height={size} viewBox="0 0 22 22"><Path {...common} d="M11 3s6 6.5 6 10.5A6 6 0 0 1 5 13.5C5 9.5 11 3 11 3z" /></Svg>;
+    case 'stomach':
+      return <Svg width={size} height={size} viewBox="0 0 22 22"><Path {...common} d="M8 3v4c0 2 1.5 3 4 3.2 2.5.2 4 1.8 4 4.3 0 2.5-2 4.2-4.5 4.2S7 19.5 6 16.5" /></Svg>;
+    case 'flask':
+      return <Svg width={size} height={size} viewBox="0 0 22 22"><Path {...common} d="M9 3v6L4.5 16.5c-.7 1.3.2 3 1.7 3h9.6c1.5 0 2.4-1.7 1.7-3L13 9V3M8 3h6M7.5 13h7" /></Svg>;
+    case 'cells':
+      return <Svg width={size} height={size} viewBox="0 0 22 22"><Circle cx={8} cy={8} r={4} {...common} /><Circle cx={15} cy={14} r={4} {...common} /></Svg>;
+    case 'shield':
+      return <Svg width={size} height={size} viewBox="0 0 22 22"><Path {...common} d="M11 3l7 2.5v5C18 15 15 18.5 11 20 7 18.5 4 15 4 10.5v-5z" /></Svg>;
+    case 'bone':
+      return <Svg width={size} height={size} viewBox="0 0 22 22"><Path {...common} d="M7 15l-1 1a2 2 0 1 1-2-2l1-1m9-3l1-1a2 2 0 1 0 2-2l-1 1M6 14l8-8m-7 9a2 2 0 1 1-2-2m13-3a2 2 0 1 0-2-2" /></Svg>;
+    case 'activity':
+      return <Svg width={size} height={size} viewBox="0 0 22 22"><Path {...common} d="M2 11h4l2 6 4-12 2 6h6" /></Svg>;
     default:
       return null;
   }
