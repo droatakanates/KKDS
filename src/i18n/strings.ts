@@ -66,7 +66,7 @@ export const navTabs: { id: 'home' | 'saved' | 'history' | 'profile'; label: Loc
 export const categoryNames: Record<CategoryId, LocalizedText> = {
   cardio: { tr: 'Kardiyoloji', az: 'Kardiologiya', 'tr-CY': 'Kardiyoloji' },
   vte: { tr: 'Tromboemboli', az: 'Tromboemboliya', 'tr-CY': 'Tromboemboli' },
-  pulm: { tr: 'Solunum', az: 'Tənəffüs', 'tr-CY': 'Solunum' },
+  pulm: { tr: 'Göğüs Hastalıkları', az: 'Ağciyər xəstəlikləri', 'tr-CY': 'Göğüs Hastalıkları' },
   gastro: { tr: 'Gastro / Hepatoloji', az: 'Qastro / Hepatologiya', 'tr-CY': 'Gastro / Hepatoloji' },
   neph: { tr: 'Nefroloji', az: 'Nefrologiya', 'tr-CY': 'Nefroloji' },
   endo: { tr: 'Endokrin / Metabolik', az: 'Endokrin / Metabolik', 'tr-CY': 'Endokrin / Metabolik' },
@@ -75,4 +75,13 @@ export const categoryNames: Record<CategoryId, LocalizedText> = {
   rheum: { tr: 'Romatoloji', az: 'Revmatologiya', 'tr-CY': 'Romatoloji' },
   neuro: { tr: 'Nöroloji', az: 'Nevrologiya', 'tr-CY': 'Nöroloji' },
   general: { tr: 'Genel Dahiliye', az: 'Ümumi Daxili', 'tr-CY': 'Genel Dahiliye' },
+};
+
+/** Bir branş içindeki alt başlık adları. */
+export const subcategoryNames: Record<string, LocalizedText> = {
+  hepato: { tr: 'Hepatoloji', az: 'Hepatologiya', 'tr-CY': 'Hepatoloji' },
+  gibleed: { tr: 'GİS Kanama', az: 'MBT Qanaxma', 'tr-CY': 'GİS Kanama' },
+  pancreatitis: { tr: 'Pankreatit', az: 'Pankreatit', 'tr-CY': 'Pankreatit' },
+  uc: { tr: 'Ülseratif Kolit', az: 'Xoralı Kolit', 'tr-CY': 'Ülseratif Kolit' },
+  crohn: { tr: 'Crohn Hastalığı', az: 'Crohn Xəstəliyi', 'tr-CY': 'Crohn Hastalığı' },
 };

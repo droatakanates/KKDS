@@ -124,8 +124,31 @@ export const SPECIALTIES: { id: CategoryId; icon: CategoryIcon }[] = [
   { id: 'general', icon: 'activity' },
 ];
 
+/**
+ * Bazı branşların alt başlıkları (ana sayfada açılır gruplar).
+ * Sıra burada belirlenir; her alt başlık ilgili skor id'lerini içerir.
+ */
+export const SUBCATEGORIES: Partial<Record<CategoryId, { id: string; calcIds: string[] }[]>> = {
+  gastro: [
+    { id: 'hepato', calcIds: ['child-pugh', 'meld', 'meld-na', 'maddrey', 'gahs', 'fib4', 'apri', 'nafld-fs', 'west-haven'] },
+    { id: 'gibleed', calcIds: ['aims65', 'rockall'] },
+    { id: 'pancreatitis', calcIds: ['ranson', 'bisap'] },
+    { id: 'uc', calcIds: ['partial-mayo'] },
+    { id: 'crohn', calcIds: ['harvey-bradshaw'] },
+  ],
+};
+
 export function getCalculator(id: string): Calculator | undefined {
   return calculators.find((c) => c.id === id);
+}
+
+/** Bir branşın alt başlıklarını (varsa) sıralı ve dolu olarak döndürür. */
+export function subgroupsOf(category: CategoryId): { id: string; calcs: Calculator[] }[] | null {
+  const def = SUBCATEGORIES[category];
+  if (!def) return null;
+  return def
+    .map((g) => ({ id: g.id, calcs: g.calcIds.map(getCalculator).filter((c): c is Calculator => !!c) }))
+    .filter((g) => g.calcs.length > 0);
 }
 
 /** Verilen branştaki skorlar. */

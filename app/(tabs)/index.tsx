@@ -1,13 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { calculators, scoresIn, usedSpecialties } from '../../src/calculators/registry';
+import { calculators, scoresIn, subgroupsOf, usedSpecialties } from '../../src/calculators/registry';
 import type { CategoryIcon, CategoryId } from '../../src/calculators/types';
 import { Icon } from '../../src/components/Icon';
 import { LanguageToggle } from '../../src/components/LanguageToggle';
 import { ScoreCard } from '../../src/components/ScoreCard';
 import { useI18n } from '../../src/i18n';
-import { BRAND, categoryNames, ui } from '../../src/i18n/strings';
+import { BRAND, categoryNames, subcategoryNames, ui } from '../../src/i18n/strings';
 import { useAppState } from '../../src/store/appState';
 import { colors, radius, shadow, shadowLift, spacing, type } from '../../src/theme';
 
@@ -17,6 +17,8 @@ export default function HomeScreen() {
   const { favorites } = useAppState();
   const [q, setQ] = useState('');
   const [cat, setCat] = useState<CategoryId | 'all'>('all');
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const toggle = (id: string) => setExpanded((p) => ({ ...p, [id]: !p[id] }));
 
   const searching = q.trim().length > 0;
   const filtered = useMemo(() => {
@@ -92,6 +94,18 @@ export default function HomeScreen() {
             {specs.map((s) => {
               const items = scoresIn(s.id);
               if (!items.length) return null;
+              if (subgroupsOf(s.id)) {
+                return (
+                  <CategoryAccordion
+                    key={s.id}
+                    catId={s.id}
+                    icon={s.icon}
+                    count={items.length}
+                    open={!!expanded[s.id]}
+                    onToggle={() => toggle(s.id)}
+                  />
+                );
+              }
               return (
                 <Group key={s.id} specIcon={s.icon} label={tx(categoryNames[s.id])} count={items.length}>
                   {items.map((c) => <ScoreCard key={c.id} calc={c} />)}
@@ -143,6 +157,52 @@ function Group({
   );
 }
 
+/** Alt başlıkları olan branş: başlığa tıklayınca açılır/kapanır. */
+function CategoryAccordion({
+  catId,
+  icon,
+  count,
+  open,
+  onToggle,
+}: {
+  catId: CategoryId;
+  icon: CategoryIcon;
+  count: number;
+  open: boolean;
+  onToggle: () => void;
+}) {
+  const { tx } = useI18n();
+  const subs = subgroupsOf(catId) ?? [];
+  return (
+    <View style={{ gap: spacing.md }}>
+      <Pressable style={styles.secLabel} onPress={onToggle}>
+        <Icon name={icon} size={14} color={colors.accent} />
+        <Text style={styles.secLabelTxt}>{tx(categoryNames[catId]).toLocaleUpperCase('tr')}</Text>
+        <View style={styles.countPill}>
+          <Text style={styles.countTxt}>{count}</Text>
+        </View>
+        <View style={{ transform: [{ rotate: open ? '90deg' : '0deg' }] }}>
+          <Icon name="chev" size={14} color={colors.muted} />
+        </View>
+      </Pressable>
+      {open &&
+        subs.map((g) => (
+          <View key={g.id} style={{ gap: spacing.sm }}>
+            <View style={styles.subLabelRow}>
+              <View style={styles.subDot} />
+              <Text style={styles.subLabelTxt}>{tx(subcategoryNames[g.id])}</Text>
+            </View>
+            <View style={{ gap: spacing.md }}>
+              {g.calcs.map((c) => (
+                <ScoreCard key={c.id} calc={c} />
+              ))}
+            </View>
+          </View>
+        ))}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg },
   head: { paddingHorizontal: spacing.xxl, paddingBottom: spacing.md },
@@ -170,6 +230,9 @@ const styles = StyleSheet.create({
   body: { flex: 1 },
   secLabel: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, paddingHorizontal: spacing.xs },
   secLabelTxt: { ...type.micro, color: colors.muted },
+  subLabelRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, paddingHorizontal: spacing.xs, marginTop: spacing.xs },
+  subDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: colors.accent },
+  subLabelTxt: { fontFamily: type.label.fontFamily, fontSize: 12.5, color: colors.text },
   countPill: { marginLeft: 'auto', backgroundColor: colors.tint, paddingHorizontal: spacing.md, paddingVertical: 2, borderRadius: radius.round },
   countTxt: { fontFamily: type.label.fontFamily, fontSize: 11, color: colors.muted },
   empty: { ...type.body, color: colors.muted, textAlign: 'center', paddingVertical: spacing.xxxl },
