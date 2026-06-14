@@ -37,6 +37,18 @@ import { winters } from './defs/winters';
 import { osmolarGap } from './defs/osmolar-gap';
 import { fena } from './defs/fena';
 import { homaIr } from './defs/homa-ir';
+import { fourTs } from './defs/four-ts';
+import { isthDic } from './defs/isth-dic';
+import { plasmic } from './defs/plasmic';
+import { ecog } from './defs/ecog';
+import { karnofsky } from './defs/karnofsky';
+import { mascc } from './defs/mascc';
+import { khorana } from './defs/khorana';
+import { ipi } from './defs/ipi';
+import { flipi } from './defs/flipi';
+import { issMyeloma } from './defs/iss-myeloma';
+import { binet } from './defs/binet';
+import { rai } from './defs/rai';
 
 /**
  * Tüm skorların kayıt defteri.
@@ -60,6 +72,8 @@ export const calculators: Calculator[] = [
   ckdepi, cockcroft, anionGap, correctedCalcium, correctedSodium, winters, osmolarGap, fena,
   // Endokrin / Metabolik
   homaIr,
+  // Hematoloji / Onkoloji
+  fourTs, isthDic, plasmic, ecog, karnofsky, mascc, khorana, ipi, flipi, issMyeloma, binet, rai,
 ];
 
 /** Branşların sırası + ikon anahtarı (ana sayfa gruplama + masaüstü kenar çubuğu). */
