@@ -64,14 +64,15 @@ src/
     index.ts               # Tasarım token'ları (renk, tone, gradyan, font, gölge)
 ```
 
-## Skorlar (80 skor / 11 branş)
+## Skorlar (91 skor / 11 branş)
 
 Hepsi üç dilde; her biri "ne zaman kullanılır" + kaynak içerir. Branşlar:
 
 - **Kardiyoloji:** CHA₂DS₂-VASc, HAS-BLED, CHADS₂, Killip, NYHA, HEART, TIMI (NSTEMI/STEMI), Sgarbossa, ORBIT
 - **Tromboemboli:** Wells (PE/DVT), sPESI, PERC, Padua, IMPROVE VTE, Hestia, Caprini
 - **Solunum:** CURB-65, PSI, SMART-COP, mMRC, CAT, ACT, Epworth, Light, BODE, GOLD, STOP-BANG, 4C
-- **Gastro/Hepatoloji:** Child-Pugh, MELD, MELD-Na, Maddrey, GAHS, FIB-4, APRI, NAFLD-FS, AIMS65, Rockall, West Haven, Ranson, BISAP, Harvey-Bradshaw, Parsiyel Mayo
+- **Gastro/Hepatoloji** (ana sayfada açılır alt başlıklı): Child-Pugh, MELD, MELD-Na, Maddrey, GAHS, FIB-4, APRI, NAFLD-FS, AIMS65, Rockall, West Haven, Ranson, BISAP, Harvey-Bradshaw (Crohn)
+  - **Ülseratif Kolit:** Truelove-Witts, Mayo (Tam/Parsiyel), SCCAI, Lichtiger, MES, UCEIS, Robarts (RHI), UCDAI, Travis/Oxford, Ho, PUCAI
 - **Nefroloji/Metabolik:** eGFR (CKD-EPI), Cockcroft-Gault, anyon açığı, düzeltilmiş Ca/Na, Winter, osmolar açık, FENa, HOMA-IR
 - **Hematoloji/Onkoloji:** 4Ts, ISTH DIC, PLASMIC, ECOG, Karnofsky, MASCC, Khorana, IPI, FLIPI, ISS, Binet, Rai
 - **İnfeksiyon/Sepsis:** qSOFA, SIRS, Centor, NEWS2, SOFA

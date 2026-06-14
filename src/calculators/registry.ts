@@ -27,6 +27,17 @@ import { westHaven } from './defs/west-haven';
 import { ranson } from './defs/ranson';
 import { harveyBradshaw } from './defs/harvey-bradshaw';
 import { partialMayo } from './defs/partial-mayo';
+import { ucMayo } from './defs/uc-mayo';
+import { ucTruelove } from './defs/uc-truelove';
+import { ucSccai } from './defs/uc-sccai';
+import { ucLichtiger } from './defs/uc-lichtiger';
+import { ucMes } from './defs/uc-mes';
+import { ucUceis } from './defs/uc-uceis';
+import { ucRobarts } from './defs/uc-robarts';
+import { ucUcdai } from './defs/uc-ucdai';
+import { ucTravis } from './defs/uc-travis';
+import { ucHo } from './defs/uc-ho';
+import { ucPucai } from './defs/uc-pucai';
 import { gcs } from './defs/gcs';
 import { ckdepi } from './defs/ckdepi';
 import { cockcroft } from './defs/cockcroft';
@@ -94,7 +105,9 @@ export const calculators: Calculator[] = [
   qsofa, sirs, centor, news2, sofa,
   // Gastro / Hepatoloji
   childPugh, meld, meldNa, maddrey, gahs, fib4, apri, nafld,
-  aims65, rockall, westHaven, ranson, bisap, harveyBradshaw, partialMayo,
+  aims65, rockall, westHaven, ranson, bisap, harveyBradshaw,
+  // Ülseratif kolit
+  ucTruelove, ucMayo, partialMayo, ucSccai, ucLichtiger, ucMes, ucUceis, ucRobarts, ucUcdai, ucTravis, ucHo, ucPucai,
   // Nöroloji
   gcs,
   // Nefroloji
@@ -133,7 +146,7 @@ export const SUBCATEGORIES: Partial<Record<CategoryId, { id: string; calcIds: st
     { id: 'hepato', calcIds: ['child-pugh', 'meld', 'meld-na', 'maddrey', 'gahs', 'fib4', 'apri', 'nafld-fs', 'west-haven'] },
     { id: 'gibleed', calcIds: ['aims65', 'rockall'] },
     { id: 'pancreatitis', calcIds: ['ranson', 'bisap'] },
-    { id: 'uc', calcIds: ['partial-mayo'] },
+    { id: 'uc', calcIds: ['uc-truelove', 'uc-mayo', 'partial-mayo', 'uc-sccai', 'uc-lichtiger', 'uc-mes', 'uc-uceis', 'uc-robarts', 'uc-ucdai', 'uc-travis', 'uc-ho', 'uc-pucai'] },
     { id: 'crohn', calcIds: ['harvey-bradshaw'] },
   ],
 };
