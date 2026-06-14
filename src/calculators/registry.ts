@@ -58,6 +58,18 @@ import { padua } from './defs/padua';
 import { improveVte } from './defs/improve-vte';
 import { hestia } from './defs/hestia';
 import { caprini } from './defs/caprini';
+import { mmrc } from './defs/mmrc';
+import { cat } from './defs/cat';
+import { act } from './defs/act';
+import { epworth } from './defs/epworth';
+import { light } from './defs/light';
+import { smartcop } from './defs/smartcop';
+import { bode } from './defs/bode';
+import { gold } from './defs/gold';
+import { psi } from './defs/psi';
+import { fourC } from './defs/four-c';
+import { news2 } from './defs/news2';
+import { sofa } from './defs/sofa';
 
 /**
  * Tüm skorların kayıt defteri.
@@ -69,9 +81,9 @@ export const calculators: Calculator[] = [
   // Tromboemboli
   wells, wellsDvt, spesi, perc, padua, improveVte, hestia, caprini,
   // Solunum
-  curb65, stopbang,
+  curb65, stopbang, psi, smartcop, mmrc, cat, act, epworth, light, bode, gold, fourC,
   // İnfeksiyon / Sepsis
-  qsofa, sirs, centor,
+  qsofa, sirs, centor, news2, sofa,
   // Gastro / Hepatoloji
   childPugh, meld, meldNa, maddrey, gahs, fib4, apri, nafld,
   aims65, rockall, westHaven, ranson, bisap, harveyBradshaw, partialMayo,
