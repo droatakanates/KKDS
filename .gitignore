@@ -6,6 +6,9 @@ node_modules/
 # Expo
 .expo/
 dist/
+
+# Görsel QA ekran görüntüleri (scripts/shots.js çıktısı)
+shots/
 web-build/
 expo-env.d.ts
 
