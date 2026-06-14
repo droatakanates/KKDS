@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { calculators, scoresIn, subgroupsOf, usedSpecialties } from '../../src/calculators/registry';
@@ -157,7 +157,7 @@ function Group({
   );
 }
 
-/** Alt başlıkları olan branş: başlığa tıklayınca açılır/kapanır. */
+/** Alt başlıkları olan branş: tıklayınca önce hastalık butonları, butona basınca skorlar. */
 function CategoryAccordion({
   catId,
   icon,
@@ -173,6 +173,13 @@ function CategoryAccordion({
 }) {
   const { tx } = useI18n();
   const subs = subgroupsOf(catId) ?? [];
+  const [sub, setSub] = useState<string | null>(null);
+  // Kapanınca seçimi sıfırla — yeniden açılınca önce hastalıklar görünsün.
+  useEffect(() => {
+    if (!open) setSub(null);
+  }, [open]);
+  const active = subs.find((g) => g.id === sub) ?? null;
+
   return (
     <View style={{ gap: spacing.md }}>
       <Pressable style={styles.secLabel} onPress={onToggle}>
@@ -185,20 +192,35 @@ function CategoryAccordion({
           <Icon name="chev" size={14} color={colors.muted} />
         </View>
       </Pressable>
-      {open &&
-        subs.map((g) => (
-          <View key={g.id} style={{ gap: spacing.sm }}>
-            <View style={styles.subLabelRow}>
-              <View style={styles.subDot} />
-              <Text style={styles.subLabelTxt}>{tx(subcategoryNames[g.id])}</Text>
-            </View>
+
+      {open && (
+        <>
+          <View style={styles.subBtnRow}>
+            {subs.map((g) => {
+              const on = g.id === sub;
+              return (
+                <Pressable
+                  key={g.id}
+                  style={[styles.subBtn, on && styles.subBtnOn]}
+                  onPress={() => setSub(on ? null : g.id)}
+                >
+                  <Text style={[styles.subBtnTxt, on && styles.subBtnTxtOn]}>{tx(subcategoryNames[g.id])}</Text>
+                  <View style={[styles.subBtnCount, on && styles.subBtnCountOn]}>
+                    <Text style={[styles.subBtnCountTxt, on && styles.subBtnTxtOn]}>{g.calcs.length}</Text>
+                  </View>
+                </Pressable>
+              );
+            })}
+          </View>
+          {active && (
             <View style={{ gap: spacing.md }}>
-              {g.calcs.map((c) => (
+              {active.calcs.map((c) => (
                 <ScoreCard key={c.id} calc={c} />
               ))}
             </View>
-          </View>
-        ))}
+          )}
+        </>
+      )}
     </View>
   );
 }
@@ -230,9 +252,19 @@ const styles = StyleSheet.create({
   body: { flex: 1 },
   secLabel: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, paddingHorizontal: spacing.xs },
   secLabelTxt: { ...type.micro, color: colors.muted },
-  subLabelRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, paddingHorizontal: spacing.xs, marginTop: spacing.xs },
-  subDot: { width: 6, height: 6, borderRadius: 3, backgroundColor: colors.accent },
-  subLabelTxt: { fontFamily: type.label.fontFamily, fontSize: 12.5, color: colors.text },
+  subBtnRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm, paddingHorizontal: spacing.xs },
+  subBtn: {
+    flexDirection: 'row', alignItems: 'center', gap: spacing.sm,
+    backgroundColor: colors.surface, borderRadius: radius.pill,
+    paddingHorizontal: spacing.lg, paddingVertical: spacing.md,
+    borderWidth: 1, borderColor: colors.border,
+  },
+  subBtnOn: { backgroundColor: colors.accent, borderColor: colors.accent },
+  subBtnTxt: { fontFamily: type.label.fontFamily, fontSize: 13, color: colors.text },
+  subBtnTxtOn: { color: colors.surface },
+  subBtnCount: { backgroundColor: colors.tint, borderRadius: radius.round, paddingHorizontal: spacing.sm, paddingVertical: 1, minWidth: 18, alignItems: 'center' },
+  subBtnCountOn: { backgroundColor: 'rgba(255,255,255,0.25)' },
+  subBtnCountTxt: { fontFamily: type.label.fontFamily, fontSize: 11, color: colors.muted },
   countPill: { marginLeft: 'auto', backgroundColor: colors.tint, paddingHorizontal: spacing.md, paddingVertical: 2, borderRadius: radius.round },
   countTxt: { fontFamily: type.label.fontFamily, fontSize: 11, color: colors.muted },
   empty: { ...type.body, color: colors.muted, textAlign: 'center', paddingVertical: spacing.xxxl },
