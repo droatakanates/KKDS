@@ -15,6 +15,18 @@ import { sirs } from './defs/sirs';
 import { centor } from './defs/centor';
 import { childPugh } from './defs/child-pugh';
 import { bisap } from './defs/bisap';
+import { meld, meldNa } from './defs/meld';
+import { maddrey } from './defs/maddrey';
+import { gahs } from './defs/gahs';
+import { fib4 } from './defs/fib4';
+import { apri } from './defs/apri';
+import { nafld } from './defs/nafld';
+import { aims65 } from './defs/aims65';
+import { rockall } from './defs/rockall';
+import { westHaven } from './defs/west-haven';
+import { ranson } from './defs/ranson';
+import { harveyBradshaw } from './defs/harvey-bradshaw';
+import { partialMayo } from './defs/partial-mayo';
 import { gcs } from './defs/gcs';
 import { ckdepi } from './defs/ckdepi';
 
@@ -32,7 +44,8 @@ export const calculators: Calculator[] = [
   // İnfeksiyon / Sepsis
   qsofa, sirs, centor,
   // Gastro / Hepatoloji
-  childPugh, bisap,
+  childPugh, meld, meldNa, maddrey, gahs, fib4, apri, nafld,
+  aims65, rockall, westHaven, ranson, bisap, harveyBradshaw, partialMayo,
   // Nöroloji
   gcs,
   // Nefroloji
