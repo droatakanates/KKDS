@@ -49,6 +49,15 @@ import { flipi } from './defs/flipi';
 import { issMyeloma } from './defs/iss-myeloma';
 import { binet } from './defs/binet';
 import { rai } from './defs/rai';
+import { heart } from './defs/heart';
+import { timiNstemi } from './defs/timi-nstemi';
+import { timiStemi } from './defs/timi-stemi';
+import { sgarbossa } from './defs/sgarbossa';
+import { orbit } from './defs/orbit';
+import { padua } from './defs/padua';
+import { improveVte } from './defs/improve-vte';
+import { hestia } from './defs/hestia';
+import { caprini } from './defs/caprini';
 
 /**
  * Tüm skorların kayıt defteri.
@@ -56,9 +65,9 @@ import { rai } from './defs/rai';
  */
 export const calculators: Calculator[] = [
   // Kardiyoloji
-  chadsvasc, hasbled, chads2, killip, nyha,
+  chadsvasc, hasbled, chads2, killip, nyha, heart, timiNstemi, timiStemi, sgarbossa, orbit,
   // Tromboemboli
-  wells, wellsDvt, spesi, perc,
+  wells, wellsDvt, spesi, perc, padua, improveVte, hestia, caprini,
   // Solunum
   curb65, stopbang,
   // İnfeksiyon / Sepsis
