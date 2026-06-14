@@ -29,6 +29,14 @@ import { harveyBradshaw } from './defs/harvey-bradshaw';
 import { partialMayo } from './defs/partial-mayo';
 import { gcs } from './defs/gcs';
 import { ckdepi } from './defs/ckdepi';
+import { cockcroft } from './defs/cockcroft';
+import { anionGap } from './defs/anion-gap';
+import { correctedCalcium } from './defs/corrected-calcium';
+import { correctedSodium } from './defs/corrected-sodium';
+import { winters } from './defs/winters';
+import { osmolarGap } from './defs/osmolar-gap';
+import { fena } from './defs/fena';
+import { homaIr } from './defs/homa-ir';
 
 /**
  * Tüm skorların kayıt defteri.
@@ -49,7 +57,9 @@ export const calculators: Calculator[] = [
   // Nöroloji
   gcs,
   // Nefroloji
-  ckdepi,
+  ckdepi, cockcroft, anionGap, correctedCalcium, correctedSodium, winters, osmolarGap, fena,
+  // Endokrin / Metabolik
+  homaIr,
 ];
 
 /** Branşların sırası + ikon anahtarı (ana sayfa gruplama + masaüstü kenar çubuğu). */
