@@ -46,6 +46,7 @@ import { correctedCalcium } from './defs/corrected-calcium';
 import { correctedSodium } from './defs/corrected-sodium';
 import { winters } from './defs/winters';
 import { osmolarGap } from './defs/osmolar-gap';
+import { serumOsmolality } from './defs/serum-osmolality';
 import { fena } from './defs/fena';
 import { homaIr } from './defs/homa-ir';
 import { fourTs } from './defs/four-ts';
@@ -111,7 +112,7 @@ export const calculators: Calculator[] = [
   // Nöroloji
   gcs,
   // Nefroloji
-  ckdepi, cockcroft, anionGap, correctedCalcium, correctedSodium, winters, osmolarGap, fena,
+  ckdepi, cockcroft, anionGap, correctedCalcium, correctedSodium, winters, osmolarGap, serumOsmolality, fena,
   // Endokrin / Metabolik
   homaIr,
   // Hematoloji / Onkoloji
